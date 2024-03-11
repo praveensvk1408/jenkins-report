@@ -31,3 +31,31 @@ print(f"Total Count: {totalCount}")
 
 current_date = datetime.now().strftime("%d-%m-%Y")
 print(f"Current Date: {current_date}")
+
+if os.path.exists("data.json"):
+    jsondata = read_json_file("data.json")
+    dataobj = {
+        "pass" : passCount,
+        "fail" : failCount,
+        "total" : totalCount
+    }
+    # if current_date in jsondata:
+    #     print("Key exists in jsondata.")
+    jsondata[current_date] = dataobj
+    # else:
+        # print("Key does not exist in jsondata.")
+        # jsondata[current_date] = dataobj
+    # overwite the json file with the updated data
+    with open("data.json", 'w') as json_file:
+        json.dump(jsondata, json_file) 
+else:
+    print("File 'data.json' does not exist.")
+    dataobj = {
+        "pass" : passCount,
+        "fail" : failCount,
+        "total" : totalCount
+    }
+    jsondata = {}
+    jsondata[current_date] = dataobj
+    with open("data.json", 'w') as json_file:
+        json.dump(jsondata, json_file)
