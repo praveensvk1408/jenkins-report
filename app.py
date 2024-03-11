@@ -8,7 +8,7 @@ def read_json_file(file_path):
     return data
 
 # Usage
-data = read_json_file('./data.json')
+data = read_json_file('./jobs.json')
 passCount=0
 failCount=0
 totalCount=0
