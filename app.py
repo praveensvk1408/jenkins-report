@@ -1,5 +1,6 @@
 import json
 import os
+from datetime import datetime
 
 def read_json_file(file_path):
     with open(file_path, 'r') as json_file:
@@ -18,7 +19,6 @@ for item in data['data']:
     if os.path.exists(file_path):
         print(f"File '{file_path}' exists.")
         filedata = read_json_file(file_path)
-        print(filedata)
         passCount+=filedata['successNum']
         failCount+=filedata['failNum']
         totalCount+=filedata['totalNum']
@@ -28,3 +28,6 @@ for item in data['data']:
 print(f"Total Pass: {passCount}")
 print(f"Total Fail: {failCount}")
 print(f"Total Count: {totalCount}")
+
+current_date = datetime.now().strftime("%d-%m-%Y")
+print(f"Current Date: {current_date}")
